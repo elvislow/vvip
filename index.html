@@ -973,6 +973,16 @@ html[lang^="zh"] .chip-label { letter-spacing: .3em; font-size: 13px; }
 .hero--cine .hero-role { font-size: clamp(16px, 1.4vw, 20px); max-width: 40ch; }
 html[lang^="zh"] .hero-kicker { letter-spacing: .3em; }
 
+/* Kicker legibility: brighter, heavier, a soft veil so the light threads don't cut through it */
+.hero-kicker { position: relative; color: #e6eef8; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,.85), 0 2px 14px rgba(6,12,20,.9); }
+.hero-kicker::before { content: ""; position: absolute; z-index: -1; inset: -14px -28px; border-radius: 999px; background: radial-gradient(closest-side, rgba(8,14,22,.8) 0%, rgba(8,14,22,.5) 60%, transparent 100%); pointer-events: none; }
+.hero-kicker > span { display: flex; flex-wrap: wrap; align-items: center; }
+.hero-kicker > span i { font-style: normal; white-space: nowrap; }
+.hero-kicker > span i + i::before { content: "·"; display: inline-block; margin: 0 .7em; opacity: .7; }
+.hero-copy { position: relative; }
+.hero-copy::before { content: ""; position: absolute; z-index: -1; left: -6vw; right: -4vw; top: -2vw; bottom: -2vw; background: radial-gradient(closest-side, rgba(8,14,22,.55) 0%, rgba(8,14,22,.25) 55%, transparent 100%); pointer-events: none; }
+.hero-threads { opacity: .75; }
+
 /* =========================================================================
    2. SEARCHLIGHT: the grid lights up around the pointer
    ========================================================================= */
@@ -1032,7 +1042,11 @@ html[lang^="zh"] .hero-kicker { letter-spacing: .3em; }
   .hero-bg::after { background: linear-gradient(to top, var(--paper) 22%, rgba(11, 17, 25, .72) 55%, rgba(11, 17, 25, .3) 80%, rgba(11, 17, 25, .65)); }
   .hero.hero--cine { padding-top: 120px; padding-bottom: 48px; }
   .hero--cine .hero-title { font-size: clamp(92px, 30vw, 140px); }
-  .hero-kicker { font-size: 10.5px; letter-spacing: .14em; }
+  .hero-kicker { font-size: 11px; letter-spacing: .14em; align-items: flex-start; }
+  .hero-kicker img { margin-top: 2px; }
+  .hero-kicker > span { flex-direction: column; align-items: flex-start; row-gap: 5px; }
+  .hero-kicker > span i + i::before { content: none; }
+  .hero-threads { opacity: .55; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mq-track, .hero-bg img, .cov-map .city .ring, .cov-map.in .flow { animation: none !important; }
@@ -1187,7 +1201,7 @@ html[lang^="zh"] body { line-break: strict; }
     <div class="hero-threads" aria-hidden="true" data-threads></div>
     <div class="wrap hero hero--cine">
       <div class="hero-copy">
-        <p class="hero-kicker hero-in" style="--i:0"><img src="images/logo-mark-sm.webp" width="96" height="86" alt=""><span data-zh="精英保镖 · 豪华车队 · 私人飞机">Executive protection · Luxury fleet · Private jet</span></p>
+        <p class="hero-kicker hero-in" style="--i:0"><img src="images/logo-mark-sm.webp" width="96" height="86" alt=""><span data-zh="<i>精英保镖</i><i>豪华车队</i><i>私人飞机</i>"><i>Executive protection</i><i>Luxury fleet</i><i>Private jet</i></span></p>
         <h1 class="hero-title display" aria-label="VVIP Malaysia Team Services"><span aria-hidden="true" data-letters>VVIP</span></h1>
         <div class="hero-meta">
           <p class="hero-name hero-in" style="--i:1" data-zh="马来西亚<em class=k>精英团队</em>服务">Malaysia <em class=k>Team</em> Services</p>
