@@ -1,10 +1,36 @@
 {
   "trailingSlash": true,
   "redirects": [
-    { "source": "/bodyguard-(bangkok|phuket|chiang-mai)/", "destination": "/bodyguard-thailand/", "permanent": true },
-    { "source": "/zh/bodyguard-(bangkok|phuket|chiang-mai)/", "destination": "/zh/bodyguard-thailand/", "permanent": true }
+    {
+      "source": "/bodyguard-(bangkok|phuket|chiang-mai)/",
+      "destination": "/bodyguard-thailand/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/bodyguard-(bangkok|phuket|chiang-mai)/",
+      "destination": "/zh/bodyguard-thailand/",
+      "permanent": true
+    },
+    {
+      "source": "/scenarios/transfers/",
+      "destination": "/scenarios/city-alphard/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/scenarios/transfers/",
+      "destination": "/zh/scenarios/city-alphard/",
+      "permanent": true
+    }
   ],
   "headers": [
-    { "source": "/(images|fonts|js)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    {
+      "source": "/(images|fonts|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
   ]
 }
