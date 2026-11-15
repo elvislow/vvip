@@ -11,6 +11,14 @@
 <meta property="og:description" content="Executive protection, private chauffeur and private jet charter across Malaysia and Thailand.">
 <meta property="og:site_name" content="VVIP Malaysia Team Services">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://vvip-five.vercel.app/">
+<meta property="og:image" content="https://vvip-five.vercel.app/images/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="canonical" href="https://vvip-five.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/?lang=en">
+<link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/?lang=zh">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"VVIP Malaysia Team Services","alternateName":"VVIP MSIA","url":"https://vvip-five.vercel.app/","image":"https://vvip-five.vercel.app/images/og-share.jpg","logo":"https://vvip-five.vercel.app/images/logo-mark.webp","telephone":"+60145243477","description":"Executive protection, bodyguard cum driver, Alphard chauffeur and private jet charter.","areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"],"sameAs":["https://www.instagram.com/vvipmsiateam_services","https://www.facebook.com/share/1F5jgmEcrv/"]}</script>
 <link rel="icon" href="images/logo-mark-sm.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1060,6 +1068,26 @@ html[lang^="zh"] body { line-break: strict; }
 .wm-logo { width: 46px; transition: transform var(--t-med) var(--ease-out), filter var(--t-med) ease; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .5)); }
 .wordmark:hover .wm-logo { transform: scale(1.06); filter: drop-shadow(0 0 12px rgba(157, 187, 224, .45)); }
 @media (max-width: 760px) { .wm-logo { width: 40px; } }
+
+/* CTA banner with the globe on the right */
+.cta-band { isolation: isolate; }
+.cta-globe { position: absolute; z-index: 0; right: max(-4vw, -80px); top: 50%; width: min(640px, 52vw); aspect-ratio: 1; transform: translateY(-50%); opacity: 0; transition: opacity 1.4s ease; pointer-events: none; }
+.cta-globe.on { opacity: 1; }
+.cta-globe canvas { width: 100% !important; height: 100% !important; display: block; }
+.cta-band .wrap { position: relative; z-index: 1; grid-template-columns: minmax(0, 1fr); justify-items: start; padding-block: clamp(96px, 11vw, 168px); }
+.cta-band .wrap > div:first-child { max-width: 520px; }
+.cta-band .btn-row { margin-top: 8px; }
+@media (max-width: 1023px) {
+  .cta-globe { width: 78vw; right: -26vw; opacity: 0; }
+  .cta-globe.on { opacity: .55; }
+}
+@media (max-width: 760px) {
+  .cta-globe { width: 120vw; right: -48vw; top: 34%; }
+  .cta-globe.on { opacity: .4; }
+}
+.cta-globe { -webkit-mask-image: radial-gradient(closest-side, #000 82%, transparent 100%); mask-image: radial-gradient(closest-side, #000 82%, transparent 100%); }
+@media (max-width: 760px) { .cta-globe.on { opacity: .6; } }
+@media (max-width: 760px) { .cta-globe { width: 125vw; right: -38vw; top: 74%; } }
 
 </style>
 </head>
@@ -2136,8 +2164,8 @@ const PROJECTS = [
   },
   {
     slug: 'events', cat: 'protection', icon: 'flag',
-    img: 'images/alphard-arch.webp', focus: '62% 75%',
-    alt: { en: 'A line of white and black Alphards waiting under a concrete arch', zh: '一排白色和黑色 Alphard 在水泥拱门下待命' },
+    img: 'images/team-four.webp', focus: '58% 52%',
+    alt: { en: 'Four VVIP bodyguards in black standing together at an event venue', zh: '四位 VVIP 保镖穿黑衣，在活动场地站在一起' },
     title: { en: 'Corporate events & celebrations', zh: '企业活动与庆典' },
     lines: { en: ['Events &', 'celebrations'], zh: ['企业活动', '与庆典'] },
     summary: { en: 'Security and guest transport for corporate events, weddings and special occasions.', zh: '企业活动、婚礼、庆典，安保和宾客接送一起包办。' },
@@ -2357,6 +2385,7 @@ function posterHTML(p, o = {}) {
 
 function ctaHTML() {
   return `<section class="cta-band on-ink" aria-label="Enquire">
+    <div class="cta-globe" aria-hidden="true" data-globe></div>
     <div class="wrap">
       <div>
         <h2 class="rv">${L(UI.ctaH)}</h2>
@@ -2400,6 +2429,7 @@ function renderCollections() {
   renderMarquee();
   renderMap();
   zhWrap();
+  if (typeof initGlobes === 'function' && typeof globeIO !== 'undefined') initGlobes();
   /* Service choices in the form follow SERVICES */
   const seg = $('[data-seg="type"]');
   const picked = typeValue();
@@ -2857,6 +2887,30 @@ window.addEventListener('resize', checkMap);
   document.documentElement.addEventListener('pointerleave', () => { spot.classList.remove('on'); glow.classList.remove('on'); });
 })();
 
+
+/* =========================================================================
+   CTA GLOBE: loaded only when a banner scrolls near the screen
+   ========================================================================= */
+let globeLib = null;
+const globeKill = new Map();
+function loadGlobe() {
+  if (!globeLib) globeLib = new Promise((res, rej) => { const s = document.createElement('script'); s.src = 'js/globe.js'; s.async = true; s.onload = () => res(window.VVIPGlobe); s.onerror = rej; document.head.appendChild(s); });
+  return globeLib;
+}
+const globeIO = 'IntersectionObserver' in window ? new IntersectionObserver((en) => en.forEach((e) => {
+  if (!e.isIntersecting) return;
+  const el = e.target; globeIO.unobserve(el);
+  loadGlobe().then((G) => {
+    if (!el.isConnected || globeKill.has(el)) return;
+    try { globeKill.set(el, G.mount(el, { reduced: reduced(), narrow: window.innerWidth < 760 })); el.classList.add('on'); } catch (err) { /* no WebGL: the banner stays as it is */ }
+  }).catch(() => {});
+}), { rootMargin: '300px 0px' }) : null;
+function initGlobes() {
+  globeKill.forEach((kill, el) => { if (!el.isConnected) { try { kill(); } catch (e) {} globeKill.delete(el); } });
+  if (!globeIO) return;
+  $$('[data-globe]').forEach((el) => { if (!globeKill.has(el)) globeIO.observe(el); });
+}
+
 /* HERO THREADS: steel-blue light lines converging near the logo */
 (() => {
   const el = $('[data-threads]');
@@ -2874,6 +2928,7 @@ window.addEventListener('resize', checkMap);
 })();
 
 /* BOOT */
+setTimeout(initGlobes, 0);
 applyStatic();
 renderCollections();
 splitLetters();
