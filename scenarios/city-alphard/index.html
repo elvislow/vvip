@@ -3,13 +3,13 @@
 <meta charset="utf-8">
 <script>/* old #/ links from before the site had real pages */(function(){var h=location.hash;if(h.indexOf('#/')===0){var p=h.slice(1).replace(/\/?$/,'/');location.replace((location.pathname.indexOf('/zh')===0?'/zh':'')+(p==='//'?'/':p));}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>City Alphard by the hour | VVIP Malaysia</title>
-<meta name="description" content="An Alphard with chauffeur in the city area, booked by the hour at RM110. Airport runs are not included. Service: City Alphard with chauffeur. Rate guide: RM110 per hour, City area only. Airport runs not included.">
+<title>City Alphard by the hour | VVIP MSIA</title>
+<meta name="description" content="An Alphard with chauffeur in the city area, booked by the hour at RM110. Airport runs are not included. Price: RM110 per hour, City area only. Airport runs not included.">
 <meta name="theme-color" content="#0b1119">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
-<meta property="og:title" content="City Alphard by the hour | VVIP Malaysia">
-<meta property="og:description" content="An Alphard with chauffeur in the city area, booked by the hour at RM110. Airport runs are not included. Service: City Alphard with chauffeur. Rate guide: RM110 per hour, City area only. Airport runs not included.">
+<meta property="og:title" content="City Alphard by the hour | VVIP MSIA">
+<meta property="og:description" content="An Alphard with chauffeur in the city area, booked by the hour at RM110. Airport runs are not included. Price: RM110 per hour, City area only. Airport runs not included.">
 <meta property="og:site_name" content="VVIP Malaysia Team Services">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:image" content="https://www.vvipmsia.com/images/og-share.jpg">
@@ -2492,23 +2492,32 @@ function renderCity(c) {
    ========================================================================= */
 const NAME = { en: 'VVIP Malaysia', zh: 'VVIP 马来西亚' };
 function metaFor(r) {
-  const nm = L(NAME);
+  const nm = 'VVIP MSIA';
+  const WA = '014-524 3477';
   const c = r.page === 'city' ? CITIES.find((x) => x.slug === r.slug) : null;
   const p = r.page === 'project' ? bySlug(r.slug) : null;
   const M = {
-    home: [{ en: `Bodyguard Malaysia | Bodyguard Cum Driver & Alphard | ${nm}`, zh: `马来西亚保镖 | 保镖兼司机、Alphard 包车 | ${nm}` },
-      { en: `Hire a bodyguard in Malaysia: bodyguard cum driver ${RATE_BODYGUARD}/8h, city Alphard ${RATE_ALPHARD}/h, private jet. KL, Johor Bahru, Batu Pahat, Penang, Thailand.`, zh: `马来西亚请保镖：保镖兼司机 ${RATE_BODYGUARD} / 8 小时起，Alphard 司机 ${RATE_ALPHARD} / 小时，团队包车与私人飞机。服务吉隆坡、新山、峇株巴辖、槟城、泰国。` }],
-    services: [{ en: `Bodyguard Cum Driver ${RATE_BODYGUARD}/8h & City Alphard ${RATE_ALPHARD}/h | ${nm}`, zh: `服务与价格：保镖兼司机 ${RATE_BODYGUARD}/8小时、市区包车 ${RATE_ALPHARD}/小时 | ${nm}` },
-      { en: `Bodyguard cum driver ${RATE_BODYGUARD} for 8 hours, Toyota Alphard with chauffeur ${RATE_ALPHARD} per hour in the city, long-distance and team charter, private jet charter. How to book and FAQ.`, zh: `保镖兼司机 ${RATE_BODYGUARD} / 8 小时，市区 Toyota Alphard ${RATE_ALPHARD} / 小时，长途与团队包车，私人飞机包机。预约流程与常见问题。` }],
-    scenarios: [{ en: `VIP Protection & Chauffeur Scenarios | ${nm}`, zh: `服务场景：商务护卫、明星护卫、企业活动、跨境出行 | ${nm}` },
-      { en: 'Nine common arrangements: business engagements, celebrity protection, watch, jewellery and cash escort, events, cross-border travel, airport transfers, city Alphard by the hour, team charter and private jet.', zh: '九种常见安排：商务活动、明星护卫、名表珠宝现金护送、企业活动、跨境出行、机场接送、市区包车、团队包车和私人飞机。' }],
-    contact: [{ en: `Book a Bodyguard or Chauffeur on WhatsApp | ${nm}`, zh: `WhatsApp 预约保镖或司机 | ${nm}` },
-      { en: 'Send the service, date and destination and get a custom arrangement on WhatsApp 014-524 3477. Instagram, Xiaohongshu and WeChat.', zh: '告诉我们服务、日期和地点，WhatsApp 014-524 3477 为你订制方案。也可以在 Instagram、小红书、微信联系。' }],
+    home: [{ en: `Bodyguard Malaysia from ${RATE_BODYGUARD} | ${nm}`, zh: `马来西亚保镖 ${RATE_BODYGUARD} 起 | ${nm}` },
+      { en: `Bodyguard cum driver ${RATE_BODYGUARD}/8h, city Alphard ${RATE_ALPHARD}/h, airport transfers and private jet. KL, JB, Batu Pahat, Penang, Thailand. WhatsApp ${WA}.`, zh: `保镖兼司机 ${RATE_BODYGUARD}/8小时，市区 Alphard ${RATE_ALPHARD}/小时，机场接送、私人飞机。吉隆坡、新山、峇株巴辖、槟城、泰国。WhatsApp ${WA}。` }],
+    services: [{ en: `Services & Prices: Bodyguard, Alphard, Jet | ${nm}`, zh: `服务与价格：保镖、Alphard、私人飞机 | ${nm}` },
+      { en: `Bodyguard cum driver ${RATE_BODYGUARD}/8h, city Alphard ${RATE_ALPHARD}/h. Airport transfers, long-distance charter, Thailand service and private jet quoted on request.`, zh: `保镖兼司机 ${RATE_BODYGUARD}/8小时，市区 Alphard ${RATE_ALPHARD}/小时。机场接送、长途包车、泰国服务、私人飞机另外报价。` }],
+    scenarios: [{ en: `Bodyguard Services by Situation | ${nm}`, zh: `保镖服务场景 | ${nm}` },
+      { en: 'Business trips, celebrities, cash and jewellery escort, events, airport transfers, charters and private jets. See how we arrange each one.', zh: '商务出行、明星护卫、现金珠宝护送、活动、机场接送、包车、私人飞机，看看每一种怎么安排。' }],
+    contact: [{ en: `Book on WhatsApp ${WA} | ${nm}`, zh: `WhatsApp 预约 ${WA} | ${nm}` },
+      { en: 'Tell us the service, date and place. We reply on WhatsApp with a plan and price.', zh: '告诉我们服务、日期和地点，我们在 WhatsApp 回复方案和价格。' }],
     'not-found': [{ en: `Page not found | ${nm}`, zh: `找不到页面 | ${nm}` }, { en: 'This page does not exist.', zh: '这一页不存在。' }],
   };
-  if (p) return [`${L(p.title)} | ${nm}`, `${L(p.summary)} ${L(p.setup).map(([k, v]) => `${k}: ${v.replace(/<small>/g, ', ').replace(/<br>/g, ', ').replace(/<[^>]+>/g, '')}`).slice(0, 2).join('. ')}.`];
-  if (c) return [L({ en: `Bodyguard in ${c.name.en} | Bodyguard Cum Driver | ${nm}`, zh: `${c.name.zh}保镖 | 保镖兼司机、Alphard 司机 | ${nm}` }),
-    L({ en: `Hire a bodyguard in ${c.name.en}: bodyguard cum driver, VIP protection, Alphard chauffeur, airport pick-up and team charter. ${c.country === 'my' ? `From ${RATE_BODYGUARD} for 8 hours.` : 'Quote on request.'} Book on WhatsApp.`, zh: `${c.name.zh}请保镖：保镖兼司机、VIP 护卫、Alphard 司机、机场接送与团队包车。${c.country === 'my' ? `${RATE_BODYGUARD} / 8 小时起。` : '按需求报价。'}WhatsApp 预约。` })];
+  if (p) {
+    const rate = L(p.setup)[1];
+    const rv = rate ? rate[1].replace(/<small>|<br>/g, lang === 'zh' ? '，' : ', ').replace(/<[^>]+>/g, '') : '';
+    return [`${L(p.title)} | ${nm}`, `${L(p.summary)}${rv ? (lang === 'zh' ? `价格：${rv}。` : ` Price: ${rv}.`) : ''}`];
+  }
+  if (c) {
+    const my = c.country === 'my';
+    return [L(my ? { en: `Bodyguard in ${c.name.en} from ${RATE_BODYGUARD} | ${nm}`, zh: `${c.name.zh}保镖 ${RATE_BODYGUARD} 起 | ${nm}` } : { en: `Bodyguard in Thailand | ${nm}`, zh: `泰国保镖与警察护送 | ${nm}` }),
+      L(my ? { en: `Bodyguard cum driver in ${c.name.en}: ${RATE_BODYGUARD} for 8 hours. Alphard, airport transfers and VIP protection. Book on WhatsApp.`, zh: `${c.name.zh}保镖兼司机 ${RATE_BODYGUARD}/8小时，Alphard、机场接送、VIP 护卫。WhatsApp 预约。` }
+        : { en: 'Bodyguards, police escorts and Alphard in Thailand. Military bodyguard from RM1,800 per person. Book on WhatsApp.', zh: '泰国保镖、警察护送、Alphard 包车，军人保镖每人 RM1,800 起。WhatsApp 预约。' })];
+  }
   return M[r.page].map(L);
 }
 function setMeta(sel, attr, val, create) {
