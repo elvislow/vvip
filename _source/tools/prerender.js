@@ -8,7 +8,7 @@ const { chromium } = require('/opt/npm-tools/node_modules/playwright');
 
 const SRC = path.resolve(__dirname, '../src');
 const OUT = path.resolve(process.argv[2] || path.join(__dirname, '../out'));
-const BASE = 'https://vvip-five.vercel.app';
+const BASE = 'https://www.vvipmsia.com';
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.woff2': 'font/woff2', '.json': 'application/json', '.txt': 'text/plain', '.xml': 'application/xml' };
 
 const server = http.createServer((req, res) => {
