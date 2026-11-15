@@ -20,7 +20,7 @@ const server = http.createServer((req, res) => {
 });
 
 const SCEN = ['business', 'celebrity', 'high-value', 'events', 'cross-border', 'transfers', 'charter', 'private-jet'];
-const CITY = ['bodyguard-kuala-lumpur', 'bodyguard-johor-bahru', 'bodyguard-batu-pahat', 'bodyguard-penang', 'bodyguard-bangkok', 'bodyguard-phuket', 'bodyguard-chiang-mai'];
+const CITY = ['bodyguard-kuala-lumpur', 'bodyguard-johor-bahru', 'bodyguard-batu-pahat', 'bodyguard-penang', 'bodyguard-thailand'];
 const ROUTES = ['/', '/services/', '/scenarios/', '/contact/', ...SCEN.map((s) => `/scenarios/${s}/`), ...CITY.map((c) => `/${c}/`)];
 
 (async () => {

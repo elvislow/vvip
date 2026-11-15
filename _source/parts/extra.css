@@ -372,3 +372,5 @@ html[lang^="zh"] body { line-break: strict; }
 .hero-h1 { margin: 0; font: inherit; }
 .hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
 .hero--cine .hero-role { max-width: 46ch; }
+
+.specs dd small { display: block; margin-top: 8px; font-size: .78em; font-weight: 400; line-height: 1.5; color: var(--steel); }

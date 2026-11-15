@@ -1,5 +1,9 @@
 {
   "trailingSlash": true,
+  "redirects": [
+    { "source": "/bodyguard-(bangkok|phuket|chiang-mai)/", "destination": "/bodyguard-thailand/", "permanent": true },
+    { "source": "/zh/bodyguard-(bangkok|phuket|chiang-mai)/", "destination": "/zh/bodyguard-thailand/", "permanent": true }
+  ],
   "headers": [
     { "source": "/(images|fonts|js)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
   ]
