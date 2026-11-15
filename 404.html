@@ -1113,6 +1113,14 @@ html[lang^="zh"] body { line-break: strict; }
 
 .specs dd small { display: block; margin-top: 8px; font-size: .78em; font-weight: 400; line-height: 1.5; color: var(--steel); }
 
+/* service cards: list sits right under the intro, price row pinned to the bottom */
+.svc-card { grid-template-rows: auto auto auto 1fr auto; }
+.svc-card .checks { align-self: start; }
+@media (min-width: 761px) {
+  .svc-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .svc-card:last-child:nth-child(odd) .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+}
+
 </style>
 <meta property="og:locale" content="en_MY"></head>
 <body>
@@ -2035,7 +2043,7 @@ const SERVICES = [
     id: 'thailand', name: { en: 'Thailand one‑stop service', zh: '泰国一站式服务' },
     price: { en: 'From RM1,000', zh: 'RM1,000 起' }, time: { en: 'Per item', zh: '按项目' },
     line: { en: 'Protection, escorts and VIP experiences in Thailand, arranged by one team.', zh: '在泰国的保护、护送和尊享体验，由同一个团队安排。' },
-    includes: { en: ['Police escort, airport to hotel from RM1,500', 'Military bodyguard from RM1,800 per person (10 hours)', 'Local guide & translator from RM1,000 (10 hours)', 'Helicopter flights over Bangkok from RM15,000', 'Chao Phraya river cruise from RM2,300', 'Luxury hotel booking, skydiving in Pattaya, Thai costume photo shoot'], zh: ['警察护送，机场到酒店 RM1,500 起', '军人保镖每人 RM1,800 起（10 小时）', '当地向导兼翻译 RM1,000 起（10 小时）', '曼谷直升机观光 RM15,000 起', '湄南河豪华游船 RM2,300 起', '豪华酒店、芭提雅跳伞、泰服写真'] },
+    includes: { en: ['Police escort, airport to hotel from RM1,500', 'Military bodyguard from RM1,800 per person (10 hours)', 'Local guide & translator from RM1,000 (10 hours)', 'Helicopter flights over Bangkok from RM15,000', 'Chao Phraya river cruise from RM2,300', 'Luxury hotel booking, skydiving in Pattaya, Thai costume photo shoot'], zh: ['警察护送，机场到酒店 RM1,500 起', '军人保镖每人 RM1,800 起（10 小时）', '向导兼翻译 RM1,000 起（10 小时）', '曼谷直升机观光 RM15,000 起', '湄南河豪华游船 RM2,300 起', '豪华酒店、芭提雅跳伞、泰服写真'] },
   },
   {
     id: 'charter', name: { en: 'Long‑distance charter', zh: '长途包车' },
@@ -2047,13 +2055,13 @@ const SERVICES = [
     id: 'airport', name: { en: 'Airport transfers', zh: '机场接送' },
     price: { en: 'Quote on request', zh: '按需求报价' }, time: { en: 'Per trip', zh: '按趟' },
     line: { en: 'Alphard and chauffeur to and from the airport. In the city area, the Alphard is also booked by the hour.', zh: 'Alphard 配司机机场接送。市区内也可以按小时包 Alphard。' },
-    includes: { en: ['Experienced professional chauffeur', 'Toyota Alphard', 'Meet at arrivals', `City area by the hour: ${RATE_ALPHARD}/hour (airport not included)`], zh: ['资深专业司机', 'Toyota Alphard', '在入境大厅接机', `市区按小时：${RATE_ALPHARD} / 小时（不包括机场）`] },
+    includes: { en: ['Experienced professional chauffeur', 'Toyota Alphard', 'Meet at arrivals', `City area: ${RATE_ALPHARD}/hour (not for airport runs)`], zh: ['资深专业司机', 'Toyota Alphard', '在入境大厅接机', `市区包车 ${RATE_ALPHARD} / 小时（不含机场）`] },
   },
   {
     id: 'bodyguard', name: { en: 'Bodyguard cum driver (car not included)', zh: '保镖兼司机（不包车）' }, short: { en: 'Bodyguard cum driver', zh: '保镖兼司机' },
-    price: { en: `${RATE_BODYGUARD} / 8 hours`, zh: `${RATE_BODYGUARD} / 8 小时` }, time: { en: `Overtime ${RATE_OT}/hour`, zh: `超时 ${RATE_OT} / 小时` },
+    price: { en: `${RATE_BODYGUARD} / 8 hours`, zh: `${RATE_BODYGUARD} / 8 小时` }, time: { en: '8‑hour block', zh: '8 小时一节' },
     line: { en: 'One professional who drives your car and protects you for the day.', zh: '一个人开你的车、负责护卫，跟你一整天。' },
-    includes: { en: ['Trained security personnel', 'Drives your vehicle', `Trips into Singapore +${RATE_SG}/day`, 'Watch, jewellery and cash transaction escort'], zh: ['顶尖专业护卫', '开你的车', `去新加坡 +${RATE_SG} / 天`, '名表、珠宝、现金交易护送'] },
+    includes: { en: ['Trained security personnel', 'Drives your vehicle', `Overtime ${RATE_OT}/hour`, `Trips into Singapore +${RATE_SG}/day`, 'Watch, jewellery and cash transaction escort'], zh: ['顶尖专业护卫', '开你的车', `超时 ${RATE_OT} / 小时`, `去新加坡 +${RATE_SG} / 天`, '名表、珠宝、现金交易护送'] },
   },
 ];
 
