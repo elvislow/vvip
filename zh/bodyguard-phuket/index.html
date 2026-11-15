@@ -1107,6 +1107,10 @@ html[lang^="zh"] body { line-break: strict; }
 .city > .section { padding-top: clamp(64px, 8vw, 112px) !important; padding-bottom: 0 !important; }
 .city > .city-links { padding-bottom: clamp(24px, 4vw, 48px) !important; }
 
+.hero-h1 { margin: 0; font: inherit; }
+.hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
+.hero--cine .hero-role { max-width: 46ch; }
+
 </style>
 <meta property="og:locale" content="zh_CN"><link rel="canonical" href="https://vvip-five.vercel.app/zh/bodyguard-phuket/"><link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/bodyguard-phuket/"><link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/zh/bodyguard-phuket/"><link rel="alternate" hreflang="x-default" href="https://vvip-five.vercel.app/bodyguard-phuket/"><script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://vvip-five.vercel.app/zh/"},{"@type":"ListItem","position":2,"name":"服务地区","item":"https://vvip-five.vercel.app/zh/#coverage"},{"@type":"ListItem","position":3,"name":"普吉岛","item":"https://vvip-five.vercel.app/zh/bodyguard-phuket/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"普吉岛有保镖服务吗？","acceptedAnswer":{"@type":"Answer","text":"有。普吉岛是我们的服务城市之一，保镖兼司机、精英保镖、司机和包车都可以安排。"}},{"@type":"Question","name":"普吉岛请保镖怎么收费？","acceptedAnswer":{"@type":"Answer","text":"泰国的预约按需求报价，看人手、车辆和日期。在 WhatsApp 把行程发给我们就好。"}},{"@type":"Question","name":"可以在普吉岛机场接机吗？","acceptedAnswer":{"@type":"Answer","text":"可以。告诉我们航班，我们安排司机，需要的话再加保镖。机场：普吉国际机场。"}}]},{"@type":"Service","name":"普吉岛保镖","serviceType":"Bodyguard and chauffeur service","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":{"@type":"City","name":"Phuket"}}]}</script></head>
 <body>
@@ -2550,6 +2554,8 @@ function setNav(page) {
 }
 function showRoute() {
   Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== route.page; });
+  const pg = pages[route.page];
+  if (pg) { pg.classList.add('is-entering'); void pg.offsetWidth; requestAnimationFrame(() => { pg.classList.remove('is-entering'); pg.classList.add('is-entered'); }); }
   if (route.page === 'project') renderProject(bySlug(route.slug));
   if (route.page === 'city') renderCity(CITIES.find((c) => c.slug === route.slug));
   applyMeta();

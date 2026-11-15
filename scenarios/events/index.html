@@ -1107,6 +1107,10 @@ html[lang^="zh"] body { line-break: strict; }
 .city > .section { padding-top: clamp(64px, 8vw, 112px) !important; padding-bottom: 0 !important; }
 .city > .city-links { padding-bottom: clamp(24px, 4vw, 48px) !important; }
 
+.hero-h1 { margin: 0; font: inherit; }
+.hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
+.hero--cine .hero-role { max-width: 46ch; }
+
 </style>
 <meta property="og:locale" content="en_MY"><link rel="canonical" href="https://vvip-five.vercel.app/scenarios/events/"><link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/scenarios/events/"><link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/zh/scenarios/events/"><link rel="alternate" hreflang="x-default" href="https://vvip-five.vercel.app/scenarios/events/"><script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://vvip-five.vercel.app/"},{"@type":"ListItem","position":2,"name":"Scenarios","item":"https://vvip-five.vercel.app/scenarios/"},{"@type":"ListItem","position":3,"name":"Corporate events & celebrations","item":"https://vvip-five.vercel.app/scenarios/events/"}]}]}</script></head>
 <body>
@@ -2532,6 +2536,8 @@ function setNav(page) {
 }
 function showRoute() {
   Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== route.page; });
+  const pg = pages[route.page];
+  if (pg) { pg.classList.add('is-entering'); void pg.offsetWidth; requestAnimationFrame(() => { pg.classList.remove('is-entering'); pg.classList.add('is-entered'); }); }
   if (route.page === 'project') renderProject(bySlug(route.slug));
   if (route.page === 'city') renderCity(CITIES.find((c) => c.slug === route.slug));
   applyMeta();

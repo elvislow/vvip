@@ -1107,6 +1107,10 @@ html[lang^="zh"] body { line-break: strict; }
 .city > .section { padding-top: clamp(64px, 8vw, 112px) !important; padding-bottom: 0 !important; }
 .city > .city-links { padding-bottom: clamp(24px, 4vw, 48px) !important; }
 
+.hero-h1 { margin: 0; font: inherit; }
+.hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
+.hero--cine .hero-role { max-width: 46ch; }
+
 </style>
 <meta property="og:locale" content="zh_CN"><link rel="canonical" href="https://vvip-five.vercel.app/zh/bodyguard-batu-pahat/"><link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/bodyguard-batu-pahat/"><link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/zh/bodyguard-batu-pahat/"><link rel="alternate" hreflang="x-default" href="https://vvip-five.vercel.app/bodyguard-batu-pahat/"><script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://vvip-five.vercel.app/zh/"},{"@type":"ListItem","position":2,"name":"服务地区","item":"https://vvip-five.vercel.app/zh/#coverage"},{"@type":"ListItem","position":3,"name":"峇株巴辖","item":"https://vvip-five.vercel.app/zh/bodyguard-batu-pahat/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"峇株巴辖有保镖服务吗？","acceptedAnswer":{"@type":"Answer","text":"有。峇株巴辖是我们的服务城市之一，保镖兼司机、精英保镖、司机和包车都可以安排。"}},{"@type":"Question","name":"峇株巴辖请保镖怎么收费？","acceptedAnswer":{"@type":"Answer","text":"保镖兼司机 RM388 / 8 小时，司机配 Alphard RM110 / 小时。团队、包车和私人飞机按需求报价。"}},{"@type":"Question","name":"可以在峇株巴辖机场接机吗？","acceptedAnswer":{"@type":"Answer","text":"可以。告诉我们航班，我们安排司机，需要的话再加保镖。机场：最近的机场：士乃国际机场（新山）或 KLIA。"}}]},{"@type":"Service","name":"峇株巴辖保镖","serviceType":"Bodyguard and chauffeur service","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":{"@type":"City","name":"Batu Pahat"}}]}</script></head>
 <body>
@@ -2550,6 +2554,8 @@ function setNav(page) {
 }
 function showRoute() {
   Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== route.page; });
+  const pg = pages[route.page];
+  if (pg) { pg.classList.add('is-entering'); void pg.offsetWidth; requestAnimationFrame(() => { pg.classList.remove('is-entering'); pg.classList.add('is-entered'); }); }
   if (route.page === 'project') renderProject(bySlug(route.slug));
   if (route.page === 'city') renderCity(CITIES.find((c) => c.slug === route.slug));
   applyMeta();

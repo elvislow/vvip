@@ -1107,6 +1107,10 @@ html[lang^="zh"] body { line-break: strict; }
 .city > .section { padding-top: clamp(64px, 8vw, 112px) !important; padding-bottom: 0 !important; }
 .city > .city-links { padding-bottom: clamp(24px, 4vw, 48px) !important; }
 
+.hero-h1 { margin: 0; font: inherit; }
+.hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
+.hero--cine .hero-role { max-width: 46ch; }
+
 </style>
 <meta property="og:locale" content="zh_CN"><link rel="canonical" href="https://vvip-five.vercel.app/zh/services/"><link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/services/"><link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/zh/services/"><link rel="alternate" hreflang="x-default" href="https://vvip-five.vercel.app/services/"><script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://vvip-five.vercel.app/zh/"},{"@type":"ListItem","position":2,"name":"服务与价格：保镖兼司机 RM388/8小时、Alphard RM110/小时","item":"https://vvip-five.vercel.app/zh/services/"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"服务哪些地区？","acceptedAnswer":{"@type":"Answer","text":"马来西亚：吉隆坡、新山、峇株巴辖、槟城。泰国：曼谷、普吉岛、清迈。其他地方可以先问我们。"}},{"@type":"Question","name":"保镖兼司机怎么收费？","acceptedAnswer":{"@type":"Answer","text":"RM388 / 8 小时。司机配 Alphard 是 RM110 / 小时。包车、团队和私人飞机按需求报价。"}},{"@type":"Question","name":"咨询的时候要提供什么？","acceptedAnswer":{"@type":"Answer","text":"需要的服务和保镖 / 司机配置、服务日期和地点，需要包机的话加上想要的机型。"}},{"@type":"Question","name":"安保、车和私人飞机可以一起订吗？","acceptedAnswer":{"@type":"Answer","text":"可以。安保、豪华陆上交通和私人飞机由同一个团队一起安排。"}},{"@type":"Question","name":"你们的客户是谁？","acceptedAnswer":{"@type":"Answer","text":"VVIP 客户、名人、高净值人士，还有办活动的企业。"}}]},{"@type":"Service","name":"保镖兼司机","description":"一个人负责开车和护卫，跟你一整天。","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"],"offers":{"@type":"Offer","price":"388","priceCurrency":"MYR","description":"8 hours"}},{"@type":"Service","name":"司机配车（Alphard）","description":"资深司机加豪华 Alphard，按小时预约。","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"],"offers":{"@type":"Offer","price":"110","priceCurrency":"MYR","description":"per hour"}},{"@type":"Service","name":"长途包车与团队包车","description":"一辆或多辆车，长途、团体、跨境出行都可以。","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"]},{"@type":"Service","name":"豪华私人包机","description":"尊享既高效又高端的私人空中旅程。","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"]}]}</script></head>
 <body>
@@ -2530,6 +2534,8 @@ function setNav(page) {
 }
 function showRoute() {
   Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== route.page; });
+  const pg = pages[route.page];
+  if (pg) { pg.classList.add('is-entering'); void pg.offsetWidth; requestAnimationFrame(() => { pg.classList.remove('is-entering'); pg.classList.add('is-entered'); }); }
   if (route.page === 'project') renderProject(bySlug(route.slug));
   if (route.page === 'city') renderCity(CITIES.find((c) => c.slug === route.slug));
   applyMeta();

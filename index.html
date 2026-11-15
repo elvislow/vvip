@@ -1107,6 +1107,10 @@ html[lang^="zh"] body { line-break: strict; }
 .city > .section { padding-top: clamp(64px, 8vw, 112px) !important; padding-bottom: 0 !important; }
 .city > .city-links { padding-bottom: clamp(24px, 4vw, 48px) !important; }
 
+.hero-h1 { margin: 0; font: inherit; }
+.hero-h1 .hero-title, .hero-h1 .hero-name { display: block; }
+.hero--cine .hero-role { max-width: 46ch; }
+
 </style>
 <meta property="og:locale" content="en_MY"><link rel="canonical" href="https://vvip-five.vercel.app/"><link rel="alternate" hreflang="en" href="https://vvip-five.vercel.app/"><link rel="alternate" hreflang="zh-Hans" href="https://vvip-five.vercel.app/zh/"><link rel="alternate" hreflang="x-default" href="https://vvip-five.vercel.app/"><script type="application/ld+json" id="ld-page">{"@context":"https://schema.org","@graph":[{"@type":"Service","name":"Bodyguard cum driver","description":"One professional who drives and protects you for the day.","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"],"offers":{"@type":"Offer","price":"388","priceCurrency":"MYR","description":"8 hours"}},{"@type":"Service","name":"Chauffeur with Alphard","description":"An experienced chauffeur and a premium Alphard, booked by the hour.","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"],"offers":{"@type":"Offer","price":"110","priceCurrency":"MYR","description":"per hour"}},{"@type":"Service","name":"Long‑distance & team charter","description":"One or several vehicles for long trips, groups and cross‑border travel.","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"]},{"@type":"Service","name":"Private jet charter","description":"Exclusive, seamless and time‑efficient private air travel.","provider":{"@id":"https://vvip-five.vercel.app/#org"},"areaServed":["Kuala Lumpur","Johor Bahru","Batu Pahat","Penang","Bangkok","Phuket","Chiang Mai"]}]}</script></head>
 <body>
@@ -1206,10 +1210,9 @@ html[lang^="zh"] body { line-break: strict; }
     <div class="wrap hero hero--cine">
       <div class="hero-copy">
         <p class="hero-kicker hero-in" style="--i:0"><img src="/images/logo-mark-sm.webp" width="96" height="86" alt=""><span data-zh="精英保镖 · 豪华车队 · 私人飞机" data-en="Executive protection · Luxury fleet · Private jet">Executive protection · Luxury fleet · Private jet</span></p>
-        <h1 class="hero-title display" aria-label="VVIP Malaysia: bodyguard, chauffeur and private jet services"><span aria-hidden="true" data-letters=""><span class="ch" style="--i:0">V</span><span class="ch" style="--i:1">V</span><span class="ch" style="--i:2">I</span><span class="ch" style="--i:3">P</span></span></h1>
+        <h1 class="hero-h1"><span class="hero-title display" data-letters=""><span class="ch" style="--i:0">V</span><span class="ch" style="--i:1">V</span><span class="ch" style="--i:2">I</span><span class="ch" style="--i:3">P</span></span> <span class="hero-name hero-in" style="--i:1" data-zh="马来西亚&lt;em class=k&gt;精英团队&lt;/em&gt;服务" data-en="Malaysia &lt;em class=&quot;k&quot;&gt;Team&lt;/em&gt; Services">Malaysia <em class="k">Team</em> Services</span></h1>
         <div class="hero-meta">
-          <p class="hero-name hero-in" style="--i:1" data-zh="马来西亚&lt;em class=k&gt;精英团队&lt;/em&gt;服务" data-en="Malaysia &lt;em class=&quot;k&quot;&gt;Team&lt;/em&gt; Services">Malaysia <em class="k">Team</em> Services</p>
-          <p class="hero-role hero-in" style="--i:2" data-zh="专为 VVIP 客户、名人和高净值人士定制。" data-en="Arranged for VVIP clients, celebrities and high‑net‑worth individuals.">Arranged for VVIP clients, celebrities and high‑net‑worth individuals.</p>
+          <p class="hero-role hero-in" style="--i:2" data-zh="吉隆坡、新山、峇株巴辖、槟城和泰国的保镖、保镖兼司机与 Alphard 专属司机，专为 VVIP 客户、名人和高净值人士安排。" data-en="Bodyguards, bodyguard cum drivers and Alphard chauffeurs in Kuala Lumpur, Johor Bahru, Batu Pahat, Penang and Thailand, for VVIP clients, celebrities and high‑net‑worth individuals.">Bodyguards, bodyguard cum drivers and Alphard chauffeurs in Kuala Lumpur, Johor Bahru, Batu Pahat, Penang and Thailand, for VVIP clients, celebrities and high‑net‑worth individuals.</p>
           <ul class="chips hero-in" style="--i:3" aria-label="Facts">
             <li class="chip is-place" data-zh="马来西亚 · 泰国" data-en="Malaysia · Thailand">Malaysia · Thailand</li>
             <li class="chip"><span class="live" aria-hidden="true"></span><span data-zh="欢迎预约" data-en="Taking bookings">Taking bookings</span></li>
@@ -2658,6 +2661,8 @@ function setNav(page) {
 }
 function showRoute() {
   Object.entries(pages).forEach(([k, el]) => { el.hidden = k !== route.page; });
+  const pg = pages[route.page];
+  if (pg) { pg.classList.add('is-entering'); void pg.offsetWidth; requestAnimationFrame(() => { pg.classList.remove('is-entering'); pg.classList.add('is-entered'); }); }
   if (route.page === 'project') renderProject(bySlug(route.slug));
   if (route.page === 'city') renderCity(CITIES.find((c) => c.slug === route.slug));
   applyMeta();
