@@ -278,7 +278,7 @@ const store = (() => { const mem = {}; return {
 
 /* Language comes from the address: /zh/... is Chinese, everything else English */
 let lang = /^\/zh(\/|$)/.test(location.pathname) ? 'zh' : 'en';
-const BASE = 'https://vvip-five.vercel.app';
+const BASE = 'https://www.vvipmsia.com';
 const U = (p) => (lang === 'zh' ? '/zh' : '') + p;
 const put = (sel, html) => { const el = $(sel); if (el) el.innerHTML = html; return el; };
 const L = (o) => (o && typeof o === 'object' && !Array.isArray(o) && ('en' in o)) ? o[lang] : o;
