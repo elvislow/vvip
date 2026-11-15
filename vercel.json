@@ -2,17 +2,6 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "vvip-five.vercel.app"
-        }
-      ],
-      "destination": "https://www.vvipmsia.com/:path*",
-      "permanent": true
-    },
-    {
       "source": "/bodyguard-(bangkok|phuket|chiang-mai)/",
       "destination": "/bodyguard-thailand/",
       "permanent": true
