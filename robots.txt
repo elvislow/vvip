@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.vvipmsia.com/sitemap.xml
+Sitemap: https://vvip-five.vercel.app/sitemap.xml
