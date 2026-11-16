@@ -382,3 +382,14 @@ html[lang^="zh"] body { line-break: strict; }
   .svc-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .svc-card:last-child:nth-child(odd) .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
 }
+
+/* hero: new lobby photo, Instagram chip, booking line */
+.hero-bg img { object-position: 42% 45%; }
+@media (max-width: 760px) { .hero-bg img { object-position: 22% 40%; } }
+.chip-link { color: var(--steel-hi); text-decoration: none; transition: border-color .2s, background .2s, color .2s; }
+.chip-link .ic { width: 15px; height: 15px; }
+.chip-link:hover, .chip-link:focus-visible { border-color: var(--steel); background: rgba(157, 187, 224, .14); color: #fff; }
+.hero-book { margin: 22px 0 10px; font-family: "Playfair Display", Georgia, serif; font-size: clamp(17px, 1.6vw, 20px); font-style: italic; color: var(--steel-hi); }
+@media (max-width: 760px) {
+  .hero-bg::after { background: linear-gradient(to top, var(--paper) 22%, rgba(11, 17, 25, .88) 48%, rgba(11, 17, 25, .78) 70%, rgba(11, 17, 25, .7)); }
+}

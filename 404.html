@@ -1121,6 +1121,17 @@ html[lang^="zh"] body { line-break: strict; }
   .svc-card:last-child:nth-child(odd) .checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
 }
 
+/* hero: new lobby photo, Instagram chip, booking line */
+.hero-bg img { object-position: 42% 45%; }
+@media (max-width: 760px) { .hero-bg img { object-position: 22% 40%; } }
+.chip-link { color: var(--steel-hi); text-decoration: none; transition: border-color .2s, background .2s, color .2s; }
+.chip-link .ic { width: 15px; height: 15px; }
+.chip-link:hover, .chip-link:focus-visible { border-color: var(--steel); background: rgba(157, 187, 224, .14); color: #fff; }
+.hero-book { margin: 22px 0 10px; font-family: "Playfair Display", Georgia, serif; font-size: clamp(17px, 1.6vw, 20px); font-style: italic; color: var(--steel-hi); }
+@media (max-width: 760px) {
+  .hero-bg::after { background: linear-gradient(to top, var(--paper) 22%, rgba(11, 17, 25, .88) 48%, rgba(11, 17, 25, .78) 70%, rgba(11, 17, 25, .7)); }
+}
+
 </style>
 <meta property="og:locale" content="en_MY"></head>
 <body>
@@ -1168,6 +1179,7 @@ html[lang^="zh"] body { line-break: strict; }
     <g id="i-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></g>
     <g id="i-flag"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><path d="M4 22v-7"></path></g>
     <g id="i-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></g>
+    <g id="i-instagram"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><path d="M17.5 6.5h.01"></path></g>
 
   </defs>
 </svg>
@@ -1268,7 +1280,7 @@ html[lang^="zh"] body { line-break: strict; }
       </div>
       <div class="footer-col">
         <h3 data-zh="服务场景" data-en="Scenarios">Scenarios</h3>
-        <ul data-footer-work=""><li><a href="/scenarios/business/">Business engagements</a></li><li><a href="/scenarios/celebrity/">Celebrity escort &amp; protection</a></li><li><a href="/scenarios/high-value/">Watch, jewellery &amp; cash escort</a></li><li><a href="/scenarios/events/">Corporate events &amp; celebrations</a></li><li><a href="/scenarios/cross-border/">Cross‑border business travel</a></li><li><a href="/scenarios/">All scenarios</a></li></ul>
+        <ul data-footer-work=""><li><a href="/scenarios/business/">Executive Business Protection</a></li><li><a href="/scenarios/celebrity/">Celebrity &amp; VVIP Protection</a></li><li><a href="/scenarios/high-value/">Luxury Asset &amp; Secure Transaction Escort</a></li><li><a href="/scenarios/events/">Executive Corporate &amp; Event Security</a></li><li><a href="/scenarios/cross-border/">Cross‑Border Travel &amp; Protection</a></li><li><a href="/scenarios/">All scenarios</a></li></ul>
       </div>
       <div class="footer-col">
         <h3 data-zh="服务地区" data-en="Areas we serve">Areas we serve</h3>
@@ -1926,6 +1938,7 @@ const RATE_BODYGUARD = 'RM450';
 const RATE_OT = 'RM40';
 const RATE_OUT = 'RM150';
 const RATE_ALPHARD = 'RM110';
+const RATE_ALPHARD_NIGHT = 'RM130';
 
 const WORK = 'scenarios';
 
@@ -1939,10 +1952,10 @@ const PROJECTS = [
     slug: 'business', cat: 'protection', icon: 'briefcase',
     img: '/images/sclass-rear.webp', focus: '50% 40%',
     alt: { en: 'Rear seat of a Mercedes S-Class with a VVIP chauffeur at the wheel', zh: 'VVIP 司机驾驶奔驰 S-Class，从后座看出去' },
-    title: { en: 'Business engagements', zh: '商务活动护卫' },
-    lines: { en: ['Business', 'engagements'], zh: ['商务活动', '护卫'] },
-    summary: { en: 'Protection and transport for meetings, site visits and business itineraries.', zh: '会议、考察、商务行程，安保和接送一起安排。' },
-    arrange: { en: ['Bodyguard cum driver for the full day', 'Premium vehicle matched to the occasion', 'Point‑to‑point transfers between meetings', 'Discreet presence, no fuss at the venue'], zh: ['保镖兼司机全天跟随', '按场合配豪华车型', '会议之间点对点接送', '低调随行，不打扰现场'] },
+    title: { en: 'Executive Business Protection', zh: '行政商务护卫' },
+    lines: { en: ['Executive', 'Business Protection'], zh: ['行政商务', '护卫'] },
+    summary: { en: 'Discreet executive protection and premium transportation for high-level meetings, private transactions, corporate engagements and business travel.', zh: '为高层会议、私密交易、企业活动和商务出行，提供低调的行政护卫和高端交通。' },
+    arrange: { en: ['Dedicated bodyguard cum driver for your business engagements', 'Premium vehicle arrangements tailored to your requirements', 'Secure point‑to‑point transport between meetings and venues', 'Discreet personal protection during important appointments and transactions'], zh: ['专属保镖兼司机，跟随你的商务行程', '按你的需求安排高端车辆', '会议与场地之间安全点对点接送', '重要会面和交易期间低调贴身保护'] },
     setup: { en: [['Service', 'Bodyguard cum driver (car not included)'], ['Rate guide', BG_RATE.en], ['Areas', AREAS.en], ['Tell us', 'Date, venue, number of guests']], zh: [['服务', '保镖兼司机（不包车）'], ['价格参考', BG_RATE.zh], ['地区', AREAS.zh], ['请告诉我们', '日期、地点、人数']] },
     second: { img: '/images/alphard-seats.webp', alt: { en: 'Alphard captain seats in black leather', zh: 'Alphard 黑色真皮航空座椅' } },
   },
@@ -1950,10 +1963,10 @@ const PROJECTS = [
     slug: 'celebrity', cat: 'protection', icon: 'star',
     img: '/images/celebrity-escort.webp', focus: '50% 35%',
     alt: { en: 'Two VVIP bodyguards in uniform standing beside a guest at a venue entrance', zh: '两位穿制服的 VVIP 保镖站在嘉宾两旁，在场地入口' },
-    title: { en: 'Celebrity escort & protection', zh: '明星护卫' },
-    lines: { en: ['Celebrity', 'protection'], zh: ['明星', '护卫'] },
-    summary: { en: 'Close protection for artists and public figures through crowds, venues and travel.', zh: '艺人和公众人物出场、走动、出行，全程贴身护卫。' },
-    arrange: { en: ['Close protection in crowds', 'Arrival and exit planned in advance', 'Vehicle on standby at the venue', 'Escort between hotel, venue and airport'], zh: ['人群中贴身保护', '提前安排进场和离场', '车辆在现场待命', '酒店、场地、机场之间护送'] },
+    title: { en: 'Celebrity & VVIP Protection', zh: '明星与 VVIP 护卫' },
+    lines: { en: ['Celebrity &', 'VVIP Protection'], zh: ['明星与', 'VVIP 护卫'] },
+    summary: { en: 'Discreet close protection and personalised security arrangements for celebrities, artists and high‑profile individuals across public appearances, private events and travel.', zh: '为明星、艺人和知名人士在公开亮相、私人活动和出行中，提供低调的贴身保护和个人化安保安排。' },
+    arrange: { en: ['Dedicated close protection throughout the assignment', 'Discreet crowd navigation and personal security', 'Pre‑arranged VIP arrivals and secure departure coordination', 'Dedicated vehicle standby and private transportation', 'Personal escort between hotels, event venues and airports'], zh: ['任务全程专属贴身保护', '低调带你穿过人群，保障人身安全', '提前安排 VIP 进场，协调安全离场', '专属车辆待命，私人交通接送', '酒店、活动场地、机场之间亲自护送'] },
     setup: { en: [['Service', 'Executive protection team'], ['Rate guide', 'Quote on request'], ['Areas', AREAS.en], ['Tell us', 'Event, date, crowd size']], zh: [['服务', '精英保镖团队'], ['价格参考', '按需求报价'], ['地区', AREAS.zh], ['请告诉我们', '活动、日期、人流']] },
     second: { img: '/images/fleet-kl.webp', alt: { en: 'VVIP fleet parked in Kuala Lumpur', zh: 'VVIP 车队停在吉隆坡' } },
   },
@@ -1961,10 +1974,10 @@ const PROJECTS = [
     slug: 'high-value', cat: 'protection', icon: 'gem',
     img: '/images/alphard-black-close.webp', focus: '35% 50%',
     alt: { en: 'Close-up of a black Alphard at the kerb with more vehicles behind', zh: '黑色 Alphard 停在路边，后面还有车队' },
-    title: { en: 'Watch, jewellery & cash escort', zh: '名表、珠宝、现金交易护送' },
-    lines: { en: ['High-value', 'escort'], zh: ['贵重交易', '护送'] },
-    summary: { en: 'Escort for luxury watch, jewellery and cash transactions, door to door.', zh: '名表交易、珠宝交易、现金交易，门到门护送。' },
-    arrange: { en: ['Bodyguard escort to and from the meeting', 'Driver and vehicle waiting on site', 'Route planned before the day', 'Low‑profile vehicle on request'], zh: ['保镖陪同来回交易地点', '司机和车在现场等', '当天之前先规划路线', '可要求低调车型'] },
+    title: { en: 'Luxury Asset & Secure Transaction Escort', zh: '贵重资产与安全交易护送' },
+    lines: { en: ['High‑Value Asset', 'Protection'], zh: ['贵重资产', '护送'] },
+    summary: { en: 'Discreet security and dedicated escort for luxury watches, fine jewellery, high‑value assets and cash‑related transactions, from collection to final destination.', zh: '名表、珠宝、贵重资产和现金交易，从取件到送达，全程低调安保、专人护送。' },
+    arrange: { en: ['Dedicated personal protection throughout the transaction', 'Professional escort to and from designated locations', 'Chauffeur and vehicle on standby throughout the assignment', 'Advance route planning and security coordination', 'Discreet transportation arrangements on request'], zh: ['交易全程专属人身保护', '专业护送往返指定地点', '任务期间司机和车辆全程待命', '提前规划路线，协调安保', '可要求低调的交通安排'] },
     setup: { en: [['Service', 'Bodyguard escort'], ['Rate guide', BG_RATE.en], ['Areas', AREAS.en], ['Tell us', 'Date, pick-up and meeting point']], zh: [['服务', '外出保镖护航'], ['价格参考', BG_RATE.zh], ['地区', AREAS.zh], ['请告诉我们', '日期、接送点、交易地点']] },
     second: { img: '/images/fleet-kl.webp', alt: { en: 'VVIP vehicles lined up and ready', zh: 'VVIP 车队整装待命' } },
   },
@@ -1972,10 +1985,10 @@ const PROJECTS = [
     slug: 'events', cat: 'protection', icon: 'flag',
     img: '/images/team-four.webp', focus: '58% 52%',
     alt: { en: 'Four VVIP bodyguards in black standing together at an event venue', zh: '四位 VVIP 保镖穿黑衣，在活动场地站在一起' },
-    title: { en: 'Corporate events & celebrations', zh: '企业活动与庆典' },
-    lines: { en: ['Events &', 'celebrations'], zh: ['企业活动', '与庆典'] },
-    summary: { en: 'Security and guest transport for corporate events, weddings and special occasions.', zh: '企业活动、婚礼、庆典，安保和宾客接送一起包办。' },
-    arrange: { en: ['Security team at the venue', 'VIP guest arrival and departure', 'Fleet for guest transfers', 'One contact person for the whole day'], zh: ['现场安保团队', '贵宾进场和离场', '车队负责宾客接送', '全天一个联络人'] },
+    title: { en: 'Executive Corporate & Event Security', zh: '企业与活动安保' },
+    lines: { en: ['Corporate &', 'Event Security'], zh: ['企业活动', '安保'] },
+    summary: { en: 'Professional close protection, personal security and premium transportation for VVIPs, executives, business professionals and private clients.', zh: '为 VVIP、企业高层、商务人士和私人客户，提供专业贴身保护、人身安保和高端交通。' },
+    arrange: { en: ['Escort clients during arrivals, departures and throughout the event', 'A professional and discreet security presence', 'Monitoring the surroundings and identifying potential risks', 'Managing crowd movement and controlling unauthorised access', 'Strict confidentiality of clients’ personal information and movements'], zh: ['进场、离场和活动全程陪同护卫', '专业、低调的安保在场', '观察周边环境，识别潜在风险', '协助疏导人流，管控未经授权的进入', '严格保密客户的个人资料和行踪'] },
     setup: { en: [['Service', 'Protection + fleet'], ['Rate guide', 'Quote on request'], ['Areas', AREAS.en], ['Tell us', 'Event, date, guest count']], zh: [['服务', '安保 + 车队'], ['价格参考', '按需求报价'], ['地区', AREAS.zh], ['请告诉我们', '活动、日期、宾客人数']] },
     second: { img: '/images/fleet-kl.webp', alt: { en: 'VVIP fleet parked in a row', zh: 'VVIP 车队一字排开' } },
   },
@@ -1983,10 +1996,10 @@ const PROJECTS = [
     slug: 'cross-border', cat: 'transport', icon: 'globe',
     img: '/images/alphard-thai-black.webp', focus: '50% 70%',
     alt: { en: 'Three black Alphards parked in front of wind turbines in Thailand', zh: '三辆黑色 Alphard 停在泰国的风车前' },
-    title: { en: 'Cross‑border business travel', zh: '跨境商务出行' },
-    lines: { en: ['Cross‑border', 'travel'], zh: ['跨境', '出行'] },
-    summary: { en: 'Ground transport and protection for trips across Malaysia and into Thailand.', zh: '马来西亚各地和泰国之间的出行，陆上交通和安保一起安排。' },
-    arrange: { en: ['Chauffeur and vehicle for the whole trip', 'Bodyguard on request', 'Thailand one‑stop service available', 'Can connect with a private jet leg'], zh: ['全程司机和车辆', '可加配保镖', '可配合泰国一站式服务', '可以和私人飞机行程衔接'] },
+    title: { en: 'Cross‑Border Travel & Protection', zh: '跨境出行与护卫' },
+    lines: { en: ['Cross‑Border', 'Travel & Protection'], zh: ['跨境出行', '与护卫'] },
+    summary: { en: 'Premium ground transportation and professional close protection for cross‑border journeys between Malaysia and Thailand.', zh: '马来西亚和泰国之间的跨境行程，提供高端陆上交通和专业贴身保护。' },
+    arrange: { en: ['Private chauffeur and dedicated vehicle for your journey to Thailand', 'Professional bodyguard and close protection on request', 'Cross‑border VIP transportation and travel coordination', 'Thailand ground transportation arrangements', 'Private jet and airport transfer coordination'], zh: ['前往泰国全程私人司机和专属车辆', '可加配专业保镖贴身保护', '跨境 VIP 交通与行程协调', '泰国当地陆上交通安排', '私人飞机与机场接送衔接'] },
     setup: { en: [['Service', 'Chauffeur + protection'], ['Rate guide', 'Quote on request'], ['Areas', AREAS.en], ['Tell us', 'Route, dates, passengers']], zh: [['服务', '司机 + 安保'], ['价格参考', '按需求报价'], ['地区', AREAS.zh], ['请告诉我们', '路线、日期、人数']] },
     second: { img: '/images/alphard-bangkok.webp', alt: { en: 'White Alphards on a street in Bangkok', zh: '白色 Alphard 在曼谷街头' } },
   },
@@ -1994,10 +2007,10 @@ const PROJECTS = [
     slug: 'airport-transfers', cat: 'transport', icon: 'plane',
     img: '/images/driver-rain.webp', focus: '60% 45%',
     alt: { en: 'VVIP chauffeur driving an Alphard on a rainy highway, navigation on the dashboard', zh: 'VVIP 司机在雨天驾驶 Alphard，仪表台上开着导航' },
-    title: { en: 'Airport transfers', zh: '机场接送' },
-    lines: { en: ['Airport', 'transfers'], zh: ['机场', '接送'] },
-    summary: { en: 'Alphard and chauffeur to or from the airport, meeting you at arrivals. Quoted per trip.', zh: 'Alphard 配司机来回机场，在入境大厅接你。按趟报价。' },
-    arrange: { en: ['Experienced professional chauffeur', 'Toyota Alphard or similar premium vehicle', 'We track your flight and meet you at arrivals', 'Bodyguard on request'], zh: ['资深专业司机', 'Toyota Alphard 或同级豪华车', '跟进航班，在入境大厅接机', '可加配保镖'] },
+    title: { en: 'Premium Airport Transfers', zh: '尊享机场接送' },
+    lines: { en: ['Premium Airport', 'Transfers'], zh: ['尊享', '机场接送'] },
+    summary: { en: 'Airport transportation with professional chauffeurs, premium vehicles and personalised VIP service. Reliable pick‑up and drop‑off, quoted per trip.', zh: '专业司机、高端车辆加上贴心的 VIP 服务，稳妥的机场接送。按趟报价。' },
+    arrange: { en: ['Experienced professional chauffeurs', 'Toyota Alphard or equivalent premium vehicle', 'Real‑time flight monitoring and arrival coordination', 'Personalised airport meet‑and‑greet', 'Professional bodyguard service on request'], zh: ['资深专业司机', 'Toyota Alphard 或同级豪华车', '实时跟进航班，协调抵达时间', '机场专人接机', '可加配专业保镖'] },
     setup: { en: [['Service', 'Airport transfer with Alphard'], ['Rate guide', 'Quoted per trip, by airport and destination'], ['Areas', AREAS.en], ['Tell us', 'Flight number, date, pick-up or drop-off address']], zh: [['服务', '机场接送（Alphard）'], ['价格参考', '按趟报价，看机场和目的地'], ['地区', AREAS.zh], ['请告诉我们', '航班号、日期、接送地址']] },
     second: { img: '/images/alphard-seats.webp', alt: { en: 'Alphard captain seats', zh: 'Alphard 航空座椅' } },
   },
@@ -2005,21 +2018,21 @@ const PROJECTS = [
     slug: 'city-alphard', cat: 'transport', icon: 'car',
     img: '/images/alphard-arch.webp', focus: '50% 85%',
     alt: { en: 'White Alphards lined up under a concrete arch', zh: '白色 Alphard 在水泥拱门下排成一列' },
-    title: { en: 'City Alphard by the hour', zh: '市区包车' },
-    lines: { en: ['City', 'Alphard'], zh: ['市区', '包车'] },
-    summary: { en: `An Alphard with chauffeur in the city area, booked by the hour at ${RATE_ALPHARD}. Airport runs are not included.`, zh: `市区内 Alphard 配司机，按小时 ${RATE_ALPHARD}。不包括机场接送。` },
-    arrange: { en: ['Experienced professional chauffeur', 'Toyota Alphard or similar premium vehicle', 'Meetings, shopping, dinners and errands around the city', 'Chauffeur waits for you between stops'], zh: ['资深专业司机', 'Toyota Alphard 或同级豪华车', '市内会议、购物、饭局、办事', '每一站之间司机都在等你'] },
-    setup: { en: [['Service', 'City Alphard with chauffeur'], ['Rate guide', `${RATE_ALPHARD} per hour<small>City area only. Airport runs not included</small>`], ['Areas', AREAS.en], ['Tell us', 'Date, start time, hours needed']], zh: [['服务', '市区包车（Alphard）'], ['价格参考', `${RATE_ALPHARD} / 小时<small>只限市区，不包括机场</small>`], ['地区', AREAS.zh], ['请告诉我们', '日期、开始时间、需要几个小时']] },
+    title: { en: 'Private Chauffeur Service', zh: '私人司机 · 市区包车' },
+    lines: { en: ['Private', 'Chauffeur'], zh: ['私人司机', '按小时'] },
+    summary: { en: `Premium city transport with a dedicated professional chauffeur, ideal for business meetings, shopping, dining and personal appointments. ${RATE_ALPHARD} per hour (minimum 3 hours), ${RATE_ALPHARD_NIGHT} per hour after midnight. Long‑distance travel is quoted separately.`, zh: `专属专业司机，市区高端出行，适合商务会议、购物、用餐和私人约会。每小时 ${RATE_ALPHARD}（最少 3 小时），凌晨 12 点后每小时 ${RATE_ALPHARD_NIGHT}。长途另外报价。` },
+    arrange: { en: ['Experienced VVIP team chauffeur', 'Toyota Alphard with pilot seats, or an equivalent premium vehicle on request', 'Transport for business meetings, shopping, dining and city errands', 'Dedicated chauffeur at your disposal between stops', 'Flexible hourly booking'], zh: ['VVIP 团队资深专业司机', 'Toyota Alphard 航空座椅版，或按要求安排同级豪华车', '商务会议、购物、用餐、市内办事接送', '每一站之间专属司机随时待命', '按小时弹性预约'] },
+    setup: { en: [['Service', 'Private chauffeur with Alphard'], ['Rate guide', `${RATE_ALPHARD} per hour<small>Minimum 3 hours. After 12am ${RATE_ALPHARD_NIGHT}/hour. City area only, airport not included</small>`], ['Areas', AREAS.en], ['Tell us', 'Date, start time, hours needed']], zh: [['服务', '私人司机（Alphard）'], ['价格参考', `${RATE_ALPHARD} / 小时<small>最少 3 小时。凌晨 12 点后 ${RATE_ALPHARD_NIGHT} / 小时。只限市区，不包括机场</small>`], ['地区', AREAS.zh], ['请告诉我们', '日期、开始时间、需要几个小时']] },
     second: { img: '/images/driver-hands.webp', alt: { en: 'VVIP chauffeur at the wheel', zh: 'VVIP 司机握着方向盘' } },
   },
   {
     slug: 'charter', cat: 'transport', icon: 'users',
     img: '/images/alphard-bangkok.webp', focus: '50% 72%',
     alt: { en: 'Two white Alphards travelling together on a street in Bangkok', zh: '两辆白色 Alphard 在曼谷街头一起出行' },
-    title: { en: 'Long‑distance & team charter', zh: '长途包车与团队包车' },
-    lines: { en: ['Team', 'charter'], zh: ['团队', '包车'] },
-    summary: { en: 'Several vehicles moving together for groups, families and long‑distance trips.', zh: '多辆车一起出发，适合团体、家庭和长途行程。' },
-    arrange: { en: ['Multiple vehicles in one booking', 'Long‑distance and interstate routes', 'Drivers who know the roads', 'Bodyguards can ride along'], zh: ['一次预约多辆车', '长途和跨州路线', '熟悉路况的司机', '可以加派保镖随车'] },
+    title: { en: 'Private Group Charter & Long‑Distance Transportation', zh: '私人团体包车与长途交通' },
+    lines: { en: ['Group Charter &', 'Long Distance'], zh: ['团体包车', '与长途'] },
+    summary: { en: 'Reliable, premium transport for families, corporate groups and private clients. We coordinate multiple vehicles and professional chauffeurs for long‑distance journeys, interstate travel and group transfers.', zh: '为家庭、企业团体和私人客户提供可靠的高端交通。多辆车、专业司机一起协调，长途、跨州和团体接送都可以。' },
+    arrange: { en: ['Multiple premium vehicles under one booking', 'Long‑distance and interstate transportation', 'Experienced chauffeurs familiar with long‑distance routes', 'Professional bodyguard and close protection on request', 'Coordinated transportation for groups and families'], zh: ['一次预约多辆高端车', '长途和跨州交通', '熟悉长途路线的资深司机', '可加配专业保镖贴身保护', '团体和家庭统一协调接送'] },
     setup: { en: [['Service', 'Long‑distance / team charter'], ['Rate guide', 'Quote on request'], ['Areas', AREAS.en], ['Tell us', 'Route, dates, passengers, luggage']], zh: [['服务', '长途包车 / 团队包车'], ['价格参考', '按需求报价'], ['地区', AREAS.zh], ['请告诉我们', '路线、日期、人数、行李']] },
     second: { img: '/images/alphard-thai-black.webp', alt: { en: 'Three black Alphards in Thailand', zh: '三辆黑色 Alphard 在泰国' } },
   },
@@ -2069,10 +2082,10 @@ const SERVICES = [
     includes: { en: ['Experienced professional chauffeur', 'Toyota Alphard', 'Flight tracked, met at arrivals', 'Bodyguard on request'], zh: ['资深专业司机', 'Toyota Alphard', '跟进航班，入境大厅接机', '可加配保镖'] },
   },
   {
-    id: 'city', name: { en: 'City Alphard by the hour', zh: '市区包车' },
-    price: { en: `${RATE_ALPHARD} / hour`, zh: `${RATE_ALPHARD} / 小时` }, time: { en: 'City area only', zh: '只限市区' },
-    line: { en: 'An Alphard with chauffeur around the city, booked by the hour. Airport runs not included.', zh: '市区内 Alphard 配司机，按小时计。不包括机场接送。' },
-    includes: { en: ['Experienced professional chauffeur', 'Toyota Alphard', 'Meetings, shopping, dinners', 'Chauffeur waits between stops'], zh: ['资深专业司机', 'Toyota Alphard', '会议、购物、饭局', '每一站之间司机等你'] },
+    id: 'city', name: { en: 'Private chauffeur by the hour', zh: '私人司机 · 市区包车' },
+    price: { en: `${RATE_ALPHARD} / hour`, zh: `${RATE_ALPHARD} / 小时` }, time: { en: 'Minimum 3 hours', zh: '最少 3 小时' },
+    line: { en: 'An Alphard with a dedicated chauffeur around the city, booked by the hour. Airport runs not included.', zh: '市区内 Alphard 配专属司机，按小时计。不包括机场接送。' },
+    includes: { en: ['Experienced VVIP team chauffeur', 'Toyota Alphard with pilot seats', 'Meetings, shopping, dining', `After 12am: ${RATE_ALPHARD_NIGHT}/hour`], zh: ['VVIP 团队资深司机', 'Toyota Alphard 航空座椅版', '会议、购物、用餐', `凌晨 12 点后：${RATE_ALPHARD_NIGHT} / 小时`] },
   },
   {
     id: 'bodyguard', name: { en: 'Bodyguard cum driver (car not included)', zh: '保镖兼司机（不包车）' }, short: { en: 'Bodyguard cum driver', zh: '保镖兼司机' },
@@ -2092,7 +2105,7 @@ const PROCESS = [
 const FAQ = [
   [{ en: 'Which areas do you cover?', zh: '服务哪些地区？' }, { en: 'Kuala Lumpur, Johor Bahru, Batu Pahat and Penang in Malaysia, and Thailand. For other places, ask us first.', zh: '马来西亚的吉隆坡、新山、峇株巴辖、槟城，还有泰国。其他地方请先问我们。' }],
   [{ en: 'How much is a bodyguard cum driver?', zh: '保镖兼司机怎么收费？' }, { en: `${RATE_BODYGUARD} for 8 hours, car not included (the bodyguard drives your car). Overtime is ${RATE_OT} per hour. Outstation trips add ${RATE_OUT} per day.`, zh: `${RATE_BODYGUARD} / 8 小时，不包车（保镖开你的车）。超时 ${RATE_OT} / 小时。去外地出差每天加 ${RATE_OUT}。` }],
-  [{ en: 'How much are city Alphard and airport transfers?', zh: '市区包车和机场接送怎么收费？' }, { en: `City Alphard with chauffeur is ${RATE_ALPHARD} per hour, within the city area only. Airport transfers are a separate service, quoted per trip by airport and destination.`, zh: `市区包车（Alphard 配司机）${RATE_ALPHARD} / 小时，只限市区。机场接送是另一项服务，按趟报价，看机场和目的地。` }],
+  [{ en: 'How much are city Alphard and airport transfers?', zh: '市区包车和机场接送怎么收费？' }, { en: `City Alphard with chauffeur is ${RATE_ALPHARD} per hour, minimum 3 hours, and ${RATE_ALPHARD_NIGHT} per hour after midnight. City area only. Airport transfers are a separate service, quoted per trip by airport and destination.`, zh: `市区包车（Alphard 配司机）${RATE_ALPHARD} / 小时，最少 3 小时；凌晨 12 点后 ${RATE_ALPHARD_NIGHT} / 小时。只限市区。机场接送是另一项服务，按趟报价，看机场和目的地。` }],
   [{ en: 'How are long-distance charters and private jets priced?', zh: '长途包车和私人飞机怎么收费？' }, { en: 'Both are quoted on request. Send us the route, dates and number of passengers on WhatsApp.', zh: '都按需求报价。在 WhatsApp 把路线、日期和人数发给我们就好。' }],
   [{ en: 'What is the Thailand one‑stop service?', zh: '泰国一站式服务包括什么？' }, { en: 'Police escorts, military bodyguards, local guides and translators, helicopter flights, Chao Phraya river cruises, luxury hotel booking and more, all arranged by our team. Ask on WhatsApp for the full price list.', zh: '警察护送、军人保镖、当地向导兼翻译、直升机观光、湄南河游船、豪华酒店预订等等，都由我们团队安排。完整价目表请在 WhatsApp 问我们。' }],
   [{ en: 'What should I tell you when I enquire?', zh: '咨询的时候要提供什么？' }, { en: 'The services you need and the security or chauffeur setup, the service date and destination, and your preferred private jet model if applicable.', zh: '需要的服务和保镖 / 司机配置、服务日期和地点，需要包机的话加上想要的机型。' }],
@@ -2143,7 +2156,7 @@ const CITIES = [
 const UI = {
   showing: { en: (n, N) => `Showing ${n} of ${N} scenarios`, zh: (n, N) => `显示 ${n} / ${N} 个场景` },
   scenarioN: { en: (n, N) => `Scenario ${n} of ${N}`, zh: (n, N) => `场景 ${n} / ${N}` },
-  overview: { en: 'Overview', zh: '简介' }, arrange: { en: 'What we arrange', zh: '我们安排' }, setup: { en: 'Setup & rate', zh: '配置与价格' },
+  overview: { en: 'Overview', zh: '简介' }, arrange: { en: 'Our exclusive arrangements', zh: '我们的专属安排' }, setup: { en: 'Setup & rate', zh: '配置与价格' },
   enquire: { en: 'Enquire about this', zh: '咨询这个服务' }, all: { en: 'All scenarios', zh: '全部场景' },
   onTheGround: { en: 'On the ground', zh: '实拍' }, prev: { en: 'Previous', zh: '上一个' }, next: { en: 'Next', zh: '下一个' },
   request: { en: 'Enquire', zh: '咨询' }, typical: { en: 'Booking', zh: '计费' },
